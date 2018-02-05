@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.*;
 import java.lang.StringBuilder;
+import java.util.scanner;
 /**
  *
  * @author asennima
@@ -89,7 +90,10 @@ public class nQueen {
     }
             
     public static void main(String[] args){
-        int n = 4;
+        int n = 0;
+        Scanner in = new Scanner();
+        System.out.println("Provide the size of board N x N");
+        n = in.nextInt();
         System.out.println(solveNQueens(n));
     }
 }
