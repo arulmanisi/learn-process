@@ -54,9 +54,26 @@ public class deleteBinaryTree {
         root = null;
         return root;
     }
+        
+    public static TreeNode deleteUsingRotation(TreeNode root){
+        while(root != null){
+            if(root.left == null) {
+                TreeNode tmp = root.right;
+                root = null;
+                root = tmp;                
+            } else {
+                TreeNode pivot = root.left;
+                root.left = pivot.right;
+                pivot.right = root;
+                root = pivot;
+            }
+        }
+        return null;
+    }
     
     public static void main(String[] args){
         
+        System.out.println("Delete a binray tree");
         deleteBinaryTree obj = new deleteBinaryTree();
         
         TreeNode root = new TreeNode(1);
@@ -67,8 +84,20 @@ public class deleteBinaryTree {
         
         printBT(root);
         root = deleteRecurse(root);
+        System.out.println("\n");
         printBT(root);
         
-        System.out.println("Delete a binray tree");
+        System.out.println("\n");
+        
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(3);
+        root1.left.left = new TreeNode(4);
+        root1.left.right = new TreeNode(5);
+        
+        printBT(root1);
+        root1 = deleteUsingRotation(root1);
+        System.out.println("\n");
+        printBT(root1);
     }
 }
